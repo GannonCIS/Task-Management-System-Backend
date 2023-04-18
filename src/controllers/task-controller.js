@@ -2,15 +2,15 @@ require('../config/dbConnect');
 const Task = require('../models/Task');
 
 /**
-* /api/albums/ 
+* /api/tasks
 * POST Single Album
 */
-exports.insertSingleAlbum = async(req, res) => {
+exports.insertTask = async(req, res) => {
 
     const newTask = new Task({
       name: req.body.name,
       description: req.body.description,
-      completed: false,
+      completed: req.body.completed,
     });
   
     try {
