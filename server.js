@@ -12,6 +12,9 @@ const PORT = process.env.PORT || 3000
 app.use(express.json());
 app.use(cors());
 
+const taskRoutes = require('./src/routes/task-routes');
+app.use('/', taskRoutes);
+
 const dbConnect = require('./src/config/dbConnect.js');
 
 const server = app.listen(PORT, () => {
