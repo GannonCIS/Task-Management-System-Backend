@@ -35,6 +35,21 @@ deleteTask = async(req, res) => {
   }
 }
 
+/**
+ * 
+ * Query all
+ */
+
+getTask = async(req, res) => {
+  try {
+    const tasks = await Task.find({});
+
+    res.json(tasks);
+  } catch (err) {
+    res.status(400).json( { message: err })
+  }
+}
+
 module.exports = {
   insertTask,
   deleteTask
