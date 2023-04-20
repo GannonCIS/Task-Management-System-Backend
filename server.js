@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(cors());
 
 const taskRoutes = require('./src/routes/task-routes');
-app.use('/', taskRoutes);
+app.use('/api/tasks', taskRoutes);
 
 const dbConnect = require('./src/config/dbConnect.js');
 
