@@ -40,7 +40,7 @@ deleteTask = async(req, res) => {
  * Query all
  */
 
-getTask = async(req, res) => {
+getTasks = async(req, res) => {
   try {
     const tasks = await Task.find({});
 
@@ -52,5 +52,6 @@ getTask = async(req, res) => {
 
 module.exports = {
   insertTask,
-  deleteTask
+  deleteTask,
+  getTasks
 }
