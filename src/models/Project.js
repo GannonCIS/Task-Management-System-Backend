@@ -12,7 +12,7 @@ const projectSchema = mongoose.Schema({
     required: false,
   },
   tasks: [{
-    type: ObjectId,
+    type: mongoose.SchemaTypes.ObjectId,
     trim: true,
     required: false
   }],
