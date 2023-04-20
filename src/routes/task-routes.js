@@ -4,6 +4,7 @@ const taskController = require('../controllers/task-controller');
 /*
 * APP Routes
 */
-router.post('/api/tasks', taskController.insertTask);
+router.post('', taskController.insertTask);
+router.delete('/:id', taskController.deleteTask);
 
 module.exports = router;

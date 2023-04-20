@@ -20,6 +20,18 @@ insertTask = async(req, res) => {
   }
 }
 
+deleteTask = async(req, res) => {
+  let paramID = req.params.id;
+
+  try {
+    const data = await Task.deleteOne({ _id : paramID });
+    res.json(data);
+  } catch (err) {
+    res.status(400).json( { message: err })
+  }
+}
+
 module.exports = {
-  insertTask
+  insertTask,
+  deleteTask
 }
