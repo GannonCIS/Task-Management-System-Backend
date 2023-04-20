@@ -72,5 +72,6 @@ updateTask = async(req, res) => {
 module.exports = {
   insertTask,
   deleteTask,
-  getTasks
+  getTasks,
+  updateTask
 }
