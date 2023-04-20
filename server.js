@@ -13,7 +13,9 @@ app.use(express.json());
 app.use(cors());
 
 const taskRoutes = require('./src/routes/task-routes');
+const projectRoutes = require('./src/routes/project-routes');
 app.use('/api/tasks', taskRoutes);
+app.use('/api/projects', projectRoutes)
 
 const dbConnect = require('./src/config/dbConnect.js');
 
