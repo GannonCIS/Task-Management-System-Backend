@@ -2,9 +2,9 @@ require('../config/dbConnect');
 const Task = require('../models/Task');
 
 /**
-* /api/tasks
-* POST Single Album
-*/
+ * POST /api/task
+ * Create one new task
+ */
 insertTask = async(req, res) => {
   const newTask = new Task({
     name: req.body.name,
@@ -20,6 +20,10 @@ insertTask = async(req, res) => {
   }
 }
 
+/**
+ * DELETE /api/tasks/:id
+ * Delete one task by id
+ */
 deleteTask = async(req, res) => {
   let paramID = req.params.id;
 
