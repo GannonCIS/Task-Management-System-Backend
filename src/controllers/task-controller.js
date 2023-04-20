@@ -50,6 +50,25 @@ getTasks = async(req, res) => {
   }
 }
 
+/**
+ * 
+ * Update a single task, located by id
+ */
+
+updateTask = async(req, res) => {
+  let taskID = req.params.id;
+  let newName = req.params.name;
+  let newDescription = req.params.description;
+  
+  try {
+    const task = await Task.updateOne({ _id: taskID }, { name: newName }, { description: newDescription });
+
+    res.json(task);
+  } catch (err) {
+    res.status(400).json({ message: err });
+  }
+}
+
 module.exports = {
   insertTask,
   deleteTask,
