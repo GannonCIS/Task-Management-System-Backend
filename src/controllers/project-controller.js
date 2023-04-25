@@ -12,9 +12,8 @@ getAllProjects = async(req, res) => {
 
 getProjectById = async(req, res) => {
     try {
-        
-        const projects = await Project.find({_id: req.body._id});
-        res.json({projects});
+        const project = await Project.find({_id: req.params.id}).limit(1);
+        res.json({project});
       } catch (err) {
         res.status(400).json({ message: err })
       } 
@@ -43,5 +42,6 @@ insertProject = async(req, res) => {
 
 module.exports = {
     getAllProjects,
-    insertProject
+    insertProject,
+    getProjectById
 }

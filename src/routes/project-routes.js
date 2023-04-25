@@ -8,5 +8,6 @@ const projectController = require('../controllers/project-controller');
 */
 router.post('', projectController.insertProject);
 router.get('', projectController.getAllProjects)
+router.get('/:id', projectController.getProjectById)
 
 module.exports = router;
