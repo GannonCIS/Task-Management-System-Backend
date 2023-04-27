@@ -10,6 +10,7 @@ insertTask = async(req, res) => {
     name: req.body.name,
     description: req.body.description,
     completed: req.body.completed,
+    project: req.body.project
   });
   
   try {
@@ -59,9 +60,10 @@ updateTask = async(req, res) => {
   let taskID = req.params.id;
   let newName = req.params.name;
   let newDescription = req.params.description;
+  let newProject = req.params.project
   
   try {
-    const task = await Task.updateOne({ _id: taskID }, { name: newName }, { description: newDescription });
+    const task = await Task.updateOne({ _id: taskID }, { name: newName }, { description: newDescription }, { project: newProject});
 
     res.json(task);
   } catch (err) {
