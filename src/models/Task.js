@@ -15,6 +15,12 @@ const taskSchema = mongoose.Schema({
     type: Boolean,
     required: [true, "needs completion status"],
   },
+  project: {
+    type: String,
+    trim: true,
+    required: false,
+    default: "",
+  },
 });
 
 module.exports = mongoose.model("Task", taskSchema);
