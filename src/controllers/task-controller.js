@@ -56,12 +56,10 @@ getTasks = async(req, res) => {
  */
 
 updateTask = async(req, res) => {
-  let taskID = req.params.id;
-  let newName = req.params.name;
-  let newDescription = req.params.description;
+  let reqTask = req.body;
   
   try {
-    const task = await Task.updateOne({ _id: taskID }, { name: newName }, { description: newDescription });
+    const task = await Task.updateOne(reqTask);
 
     res.json(task);
   } catch (err) {
