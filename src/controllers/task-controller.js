@@ -80,9 +80,28 @@ updateTask = async (req, res) => {
   }
 };
 
+/**
+ * 
+ * Complete a task, located by id
+ */
+
+completeTask = async(req, res) => {
+  let taskID = req.params.id;
+  let isCompleted = req.params.completed;
+
+  try {
+    const task = await Task.updateOne({ _id: taskID }, { completed: isCompleted });
+
+    res.json(task);
+  } catch(err) {
+    res.stats(400).json({message: err});
+  }
+}
+
 module.exports = {
   insertTask,
   deleteTask,
   getTasks,
   updateTask,
+  completeTask
 };
