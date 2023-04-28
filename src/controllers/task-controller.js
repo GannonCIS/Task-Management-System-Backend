@@ -1,5 +1,6 @@
 require("../config/dbConnect");
 const Task = require("../models/Task");
+const Project = require("../models/Project");
 
 /**
  * POST /api/task
@@ -10,12 +11,24 @@ insertTask = async (req, res) => {
     name: req.body.name,
     description: req.body.description,
     completed: req.body.completed,
-    project: req.body.project,
+    project: req.body.project ? req.body.project : "",
   });
 
   try {
-    await newTask.save();
-    res.json(newTask);
+    const savedTask = await newTask.save();
+
+    if (
+      req.body.project &&
+      req.body.project !== "None" &&
+      req.body.project !== ""
+    ) {
+      const updatedProject = await Project.findByIdAndUpdate(
+        req.body.project,
+        { $push: { tasks: savedTask._id } },
+        { new: true }
+      );
+    }
+    res.json(savedTask); // return the saved task object
   } catch (err) {
     res.status(400).json({ message: err });
   }

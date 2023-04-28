@@ -18,8 +18,9 @@ const taskSchema = mongoose.Schema({
   project: {
     type: String,
     trim: true,
-    required: true
-  }
+    required: false,
+    default: "",
+  },
 });
 
 module.exports = mongoose.model("Task", taskSchema);
