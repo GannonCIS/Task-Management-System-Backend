@@ -60,10 +60,25 @@ deleteProject = async (req, res) => {
   }
 };
 
+addTaskToProject = async (req, res) => {
+  let paramTask = req.params.tasks;
+  let projectID = req.params.id;
+
+  try {
+    const project = await Project.findById(projectID);
+    project.tasks.push(paramTask);
+    await project.save();
+    res.json(project);
+  } catch (err) {
+    res.status(400).json({ message: err });
+  }
+};
+
 module.exports = {
   getAllProjects,
   insertProject,
   getProjectById,
   updateProject,
   deleteProject,
+  addTaskToProject
 };
