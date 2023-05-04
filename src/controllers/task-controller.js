@@ -56,7 +56,7 @@ deleteTask = async (req, res) => {
 
 getTasks = async (req, res) => {
   try {
-    const tasks = await Task.find({});
+    const tasks = await Task.find({ completed: 0 }).exec();
 
     res.json(tasks);
   } catch (err) {
